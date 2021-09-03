@@ -1,0 +1,42 @@
+.MediaPlayerContainer {
+  min-width: 100vw;
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+  background-color: #2d2d2d;
+  color: white;
+}
+
+.MediaPlayerIcon{
+    transform: scale(1.5);
+}
+
+.VolumeBar{
+    transform: scaleX(2);
+}
+
+.ProgressBar{
+    transform: scaleX(8);
+
+}
+
+.RightOfContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    bottom: -1rem;
+    right: 2rem;
+}
+
+.MiddleOfContainer{
+    display: flex;
+    flex-direction: column;
+    bottom: -0.7rem;
+}
+
+.MiddleLogo{
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    transform: scale(1.1);
+
+}

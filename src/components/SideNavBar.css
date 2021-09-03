@@ -1,0 +1,30 @@
+.SideNavBar{
+    display: flex;
+    flex-direction: column;
+    background: #070D14;
+    width: 15vw;
+    min-height: 100vh;
+    position: fixed;
+
+}
+
+.SideNavBar a{
+    color: white;
+}
+
+#SpotifyLogo{
+    transform: scale(1.8);
+    margin-right: 1rem;
+}
+
+.LogoAndName{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.LogoAlign{
+    position: relative;
+    bottom: 3px;
+}

@@ -1,0 +1,14 @@
+.Home {
+  position: absolute;
+  top: 0;
+  left: 150px;
+  max-width: 88vw;
+  min-height: 90vh;
+  background: rgb(110, 134, 236);
+  background: linear-gradient(
+    118deg,
+    rgba(110, 134, 236, 1) 10%,
+    rgba(34, 26, 101, 1) 100%
+  );
+
+}
