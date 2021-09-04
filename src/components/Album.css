@@ -1,0 +1,16 @@
+.AlbumContainer {
+  background: rgb(218, 221, 232);
+  background: linear-gradient(
+    180deg,
+    rgba(218, 221, 232, 1) 0%,
+    rgba(2, 1, 9, 1) 100%
+  );
+  width: 85vw !important;
+  min-height: 90vh;
+  max-height: 90vh;
+  
+}
+
+
+
+

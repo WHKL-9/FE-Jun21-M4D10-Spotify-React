@@ -4,6 +4,7 @@ import SideNavBar from "./components/SideNavBar";
 import MediaPlayer from "./components/MediaPlayer";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Home from "./components/Home";
+import Album from "./components/Album";
 
 function App() {
   return (
@@ -15,6 +16,11 @@ function App() {
             path="/"
             exact
             render={(routerProps) => <Home {...routerProps} />}
+          />
+           <Route
+            path="/album/:id"
+            exact
+            render={(routerProps) => <Album {...routerProps} />}
           />
         </Switch>
         <MediaPlayer />
