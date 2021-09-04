@@ -1,3 +1,16 @@
 .MusicImage{
     object-fit:contain;
+    height: 12rem;
+}
+
+.MusicCard{
+    height: 17rem;
+    text-decoration: none;
+    background: #1F1F1F;
+    color: white
+
+}
+
+.MusicTitle:link{
+    text-decoration: none;
 }

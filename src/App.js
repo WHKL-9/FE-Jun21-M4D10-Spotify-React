@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SideNavBar from "./components/SideNavBar";
 import MediaPlayer from "./components/MediaPlayer";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import Home from "./components/Home";
 import Album from "./components/Album";
+import Layout from "./components/Layout";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route
             path="/"
             exact
-            render={(routerProps) => <Home {...routerProps} />}
+            render={(routerProps) => <Layout {...routerProps} />}
           />
            <Route
             path="/album/:id"

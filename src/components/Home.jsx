@@ -1,39 +1,46 @@
-import "./Home.css";
-import { Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { getMusic } from "../music/Music";
 import RowOfCards from "./RowOfCards";
 
-const Home = () => {
+const Home = ({artist}) => {
   const [musics, setMusic] = useState([]);
 
   //   https://striveschool-api.herokuapp.com/api/deezer/search?q=whatever
-//Avicii
-  const fetchMusic = async (any) => {
-    const fetchedMusic = await getMusic(any);
-    console.log(fetchedMusic);
-    setMusic(fetchedMusic);
+  const fetchMusic = async () => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`,{
+            method:"GET"
+        }
+      );
+      if (response.ok) {
+        const {data} = await response.json();
+        setMusic(data)
+      } else {
+        throw new Error("Something went wrong - couldn't fetch music");
+      }
+    } catch (error) {
+        console.log(error)
+    }
+    // const fetchedMusic = await getMusic({artist});
+    // console.log(fetchedMusic);
+    // setMusic(fetchedMusic);
   };
 
   useEffect(() => {
-    fetchMusic("Avicii");
+    fetchMusic();
   }, []);
 
-
-
-
-  
+ 
 
   console.log(musics.data);
   return (
-      <>
-    <Container  className="Home mb-5 container-fluid">
-      <h5 className="m-2">◢◤ Avicii ◢◤</h5>
-      <>{musics.length > 0 && <RowOfCards musics={musics} />}</>
-    </Container>
-
+    <>
+      <Container className="Home mb-5 container-fluid">
+        <h5 className="m-2 text-white">{artist}</h5>
+        <>{musics.length > 0 && <RowOfCards musics={musics} />}</>
+      </Container>
     </>
-    
   );
 };
 
