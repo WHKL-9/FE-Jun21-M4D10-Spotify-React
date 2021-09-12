@@ -1,14 +1,17 @@
-import { Container, Row, Col, Card } from "react-bootstrap";
-import { useHistory, useParams } from "react-router-dom";
+import { Container, Row, Col, Card, Table } from "react-bootstrap";
+import { useHistory, useParams, Link} from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-import "./Album.css";
+import "./Layout.css"
+import { secondsToMinutes } from "date-fns";
+import { AiOutlineClockCircle} from'react-icons/ai'
+
 
 const Album = () => {
   const params = useParams();
   const history = useHistory();
-  const [songs, setSongs] = useState([]);
+  const [tracks, setTracks] = useState([]);
   const [artist, setArtist] = useState([]);
-  const [albumImage, setAlbumImage] = useState("")
+  const [albumImage, setAlbumImage] = useState("");
 
   // console.log(params.id)
 
@@ -20,10 +23,11 @@ const Album = () => {
       );
       if (songs.ok) {
         const data = await songs.json();
-        setArtist(data.artist.name);
-        setAlbumImage(data.cover_big)
-        console.log(artist);
-        console.log(data);
+        setArtist(data.artist);
+        setAlbumImage(data.cover_big);
+        setTracks(data.tracks.data);
+        console.log("I am the data:", data);
+        console.log(data.tracks.data);
       }
     } catch (error) {
       console.log(error);
@@ -32,24 +36,41 @@ const Album = () => {
 
   useEffect(() => {
     getSong();
-  }, [getSong]);
+  }, []);
 
+  console.log("I am the tracklist:", tracks);
   return (
     <Container fluid className="Layout">
-      <Row className="AlbumSection">
-        <Col md={6} lg={6}>
-          <Card>
-            <Card.Img variant="top" src={albumImage} />
-            <Card.Body>
-              <Card.Title>{artist}</Card.Title>
-              <Card.Text>
-                example
-              </Card.Text>
-            </Card.Body>
-          </Card>
+      <Row className="AlbumSection pt-3">
+        <Col xs={12} md={4}>
+         <Link to={`/artist/${artist.id}`}>
+            <Card>
+              <Card.Img variant="top" src={albumImage} className="my-0" />
+              <Card.Body>
+                <Card.Title className="text-center p-0 my-0">{artist.name}</Card.Title>
+              </Card.Body>
+            </Card>
+         </Link>
         </Col>
-        <Col md={6} lg={6}>
-          test
+        <Col xs={12} md={8}>
+          <Table className="tableTracklist">
+            <thead>
+              <tr id="headRow">
+                <th>#</th>
+                <th>Title</th>
+                <th><AiOutlineClockCircle className="ml-2"/></th>
+              </tr>
+            </thead>
+            <tbody>
+              {tracks.map((track, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{track.title_short}</td>
+                  <td>{secondsToMinutes(track.duration)+":"+("0"+(track.duration%60)).slice(-2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </Col>
       </Row>
     </Container>

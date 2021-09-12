@@ -7,10 +7,10 @@ import { VscLibrary } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
 const SideNavBar = () => (
-  <Container fluid className="p-0">
+  <Container fluid className="p-0 SideContainer d-none d-sm-flex">
     <Nav
       // activeKey="/home"
-      className="SideNavBar d-none d-sm-flex"
+      className="SideNavBar "
     >
       <Link to="/" className="NoUnderline">
         <Nav.Item>

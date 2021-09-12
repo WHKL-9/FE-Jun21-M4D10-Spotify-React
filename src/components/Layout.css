@@ -3,9 +3,9 @@
   padding-bottom: 3rem;
   position: fixed;
   right: 0;
-  width: 85vw;
-  min-height: 90vh;
-  max-height: 90vh;
+  max-width: 85vw;
+  min-width: 70vw;
+  height: 90vh;
   overflow: auto;
 }
 
@@ -19,4 +19,38 @@
 }
 .Layout::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.tableTracklist {
+  color: white;
+}
+
+td,
+th {
+  border: none !important;
+}
+
+#headRow {
+  /* border-top: none !important; */
+  border-bottom: 1px solid #2d2d2d !important;
+}
+
+#ArtistLayoutTop {
+  background: rgb(80, 116, 247);
+  background: linear-gradient(
+    180deg,
+    rgba(80, 116, 247, 1) 0%,
+    rgba(7, 17, 187, 1) 100%
+  );
+  min-height: 13rem;
+}
+
+#ArtistLayoutBottom {
+  background: rgb(7, 17, 187);
+  background: linear-gradient(
+    180deg,
+    rgba(7, 17, 187, 1) 0%,
+    rgba(18, 18, 18, 1) 100%
+  );
+  min-height: 19rem;
 }

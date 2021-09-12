@@ -5,6 +5,7 @@ import MediaPlayer from "./components/MediaPlayer";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Album from "./components/Album";
 import Layout from "./components/Layout";
+import Artist from "./components/Artist";
 
 function App() {
   return (
@@ -17,10 +18,15 @@ function App() {
             exact
             render={(routerProps) => <Layout {...routerProps} />}
           />
-           <Route
+          <Route
             path="/album/:id"
             exact
             render={(routerProps) => <Album {...routerProps} />}
+          />
+          <Route
+            path="/artist/:id"
+            exact
+            render={(routerProps) => <Artist {...routerProps} />}
           />
         </Switch>
         <MediaPlayer />
